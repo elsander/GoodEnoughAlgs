@@ -11,7 +11,7 @@ def PlotMultipleRuns(Alg, nruns=20, fname=None):
     else:
         runs = []
         for i in range(nruns):
-            bestSol, fitHistory = tsp.TSP(200, Alg, 20000, 30, seed=None,
+            bestSol, fitHistory = tsp.TSP(200, Alg, 3000, 30, seed=None,
                                           coordfile='tmp.txt')
             runs.append(fitHistory)
         fname = 'MultRuns-' + str(Alg) + '.txt'
@@ -19,7 +19,7 @@ def PlotMultipleRuns(Alg, nruns=20, fname=None):
         scipy.savetxt(fname, runs)
 
     # plotting
-    Xs = range(0, runs.shape[0] * 1000, 1000)
+    Xs = scipy.linspace(0, runs.shape[1] * 1000, runs.shape[1])
     for i in range(runs.shape[0]):
         pl.plot(Xs, runs[i, :])
     pl.show()
@@ -31,7 +31,7 @@ def LongMC3(fname=None):
     if fname:
         run = scipy.genfromtxt(fname)
     else:
-        bestSol, run = tsp.TSP(200, 'MC3', 200000, 10, seed=None,
+        bestSol, run = tsp.TSP(200, 'MC3', 20000, 10, seed=None,
                                coordfile='tmp.txt')
         fname = 'ExampleOutput/MC3-Long.txt'
         run = scipy.array(run)
@@ -49,7 +49,7 @@ def LongSA(fname=None):
     if fname:
         run = scipy.genfromtxt(fname)
     else:
-        bestSol, run = tsp.TSP(200, 'SA', 200000, 'placeholder', seed=None,
+        bestSol, run = tsp.TSP(200, 'SA', 20000, 'placeholder', seed=None,
                                coordfile='tmp.txt')
         fname = 'ExampleOutput/SA-Long.txt'
         run = scipy.array(run)

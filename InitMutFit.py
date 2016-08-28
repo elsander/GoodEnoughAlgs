@@ -1,10 +1,11 @@
+import numpy
 import random
 import copy
 
 
 def InitializeSol(stops):
     '''Random starting solution for optimization algorithm.'''
-    x = range(stops)
+    x = numpy.linspace(0, stops-1, stops)
     random.shuffle(x)
     return x
 

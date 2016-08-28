@@ -10,8 +10,8 @@ def HillClimber(steps, tryPerStep, distMat, seed):
     bestFit = imf.Fitness(bestSol, distMat)
 
     # Initialize data structure for trial solutions and fitnesses
-    trialSols = [[] for x in range(tryPerStep)]
-    trialFits = [[] for x in range(tryPerStep)]
+    trialSols = [[]]*tryPerStep
+    trialFits = [[]]*tryPerStep
     fitHistory = []
 
     for i in range(steps):
